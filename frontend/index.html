@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Serverless URL Shortener</title>
+</head>
+<body>
+
+<h2>URL Shortener</h2>
+
+<input type="text" id="urlInput" placeholder="Enter long URL" size="50">
+<button onclick="shorten()">Shorten</button>
+
+<p id="result"></p>
+
+<script>
+const apiBase = "PASTE_YOUR_API_URL";
+
+async function shorten() {
+    const url = document.getElementById("urlInput").value;
+
+    const response = await fetch(apiBase + "/shorten", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url })
+    });
+
+    const data = await response.json();
+
+    document.getElementById("result").innerHTML =
+        "Short URL: <a href='" + apiBase + "/" + data.short_code + "' target='_blank'>" +
+        apiBase + "/" + data.short_code + "</a>";
+}
+</script>
+
+</body>
+</html>
