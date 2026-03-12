@@ -2,7 +2,7 @@ import json
 import boto3
 
 dynamodb = boto3.resource('dynamodb')
-table = dynamodb.Table('url-shortener')
+table = dynamodb.Table('PASTE_YOUR_TABLE_NAME')
 
 def lambda_handler(event, context):
 

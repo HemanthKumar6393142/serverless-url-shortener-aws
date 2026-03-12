@@ -3,7 +3,7 @@ import boto3
 from decimal import Decimal
 
 dynamodb = boto3.resource('dynamodb')
-table = dynamodb.Table('url-shortener')
+table = dynamodb.Table('PASTE_YOUR_TABLE_NAME')
 
 def convert_decimal(obj):
     if isinstance(obj, list):
