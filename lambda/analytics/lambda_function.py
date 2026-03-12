@@ -1,8 +1,19 @@
 import json
 import boto3
+from decimal import Decimal
 
 dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table('url-shortener')
+
+def convert_decimal(obj):
+    if isinstance(obj, list):
+        return [convert_decimal(i) for i in obj]
+    elif isinstance(obj, dict):
+        return {k: convert_decimal(v) for k, v in obj.items()}
+    elif isinstance(obj, Decimal):
+        return int(obj)
+    else:
+        return obj
 
 def lambda_handler(event, context):
 
@@ -18,7 +29,7 @@ def lambda_handler(event, context):
             'body': json.dumps({'message': 'URL not found'})
         }
 
-    item = response['Item']
+    item = convert_decimal(response['Item'])
 
     return {
         'statusCode': 200,
