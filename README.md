@@ -60,7 +60,7 @@ http://hemanth-url-shortener-demo.s3-website-ap-south-1.amazonaws.com
 ![Redirect](docs/screenshots/redirect-success.png)
 
 ### Analytics API Response
-![Analytics](docs/screenshots/analytics-response.png)
+![Analytics](docs/screenshots/analytics-api.png)
 
 ### Lambda Execution Logs
 ![CloudWatch](docs/screenshots/lambda-logs.png)
